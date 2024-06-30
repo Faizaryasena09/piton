@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile Page</title>
+    <title>Profile</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <div class="profile-container">
         <h2>Profile Page</h2>
-        <p>Welcome to your profile page!</p>
-        <a href="{{ url_for('home') }}">Home</a>
-        <a href="{{ url_for('update_profile') }}">Update Profile</a>
+        <p><strong>Username:</strong> {{ user.username }}</p>
+        <p><strong>Role:</strong> {{ user.role }}</p>
+        <a href="{{ url_for('change_password') }}">Change Password</a>
         <a href="{{ url_for('logout') }}">Logout</a>
+        <a href="{{ url_for('admin_home' if user.role == 'admin' else 'user_home') }}">Home</a>
     </div>
 </body>
 </html>

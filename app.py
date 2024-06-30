@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, session
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-app.secret_key = 'aryalagi'  # Gantilah dengan secret key yang aman
+app.secret_key = 'your_secret_key'  # Gantilah dengan secret key yang aman
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
 db = SQLAlchemy(app)
 
@@ -63,6 +63,35 @@ def user_home():
     if 'username' not in session or session['role'] != 'user':
         return redirect(url_for('login'))
     return render_template('user_home.html')
+
+# Halaman profile
+@app.route('/profile')
+def profile():
+    if 'username' not in session:
+        return redirect(url_for('login'))
+    user = User.query.filter_by(username=session['username']).first()
+    return render_template('profile.html', user=user)
+
+# Halaman change password
+@app.route('/change_password', methods=['GET', 'POST'])
+def change_password():
+    if 'username' not in session:
+        return redirect(url_for('login'))
+    user = User.query.filter_by(username=session['username']).first()
+    if request.method == 'POST':
+        current_password = request.form['current_password']
+        new_password = request.form['new_password']
+        confirm_password = request.form['confirm_password']
+        if user.password != current_password:
+            error = 'Current password is incorrect.'
+            return render_template('change_password.html', user=user, error=error)
+        if new_password != confirm_password:
+            error = 'New passwords do not match.'
+            return render_template('change_password.html', user=user, error=error)
+        user.password = new_password
+        db.session.commit()
+        return redirect(url_for('profile'))
+    return render_template('change_password.html', user=user)
 
 # Halaman logout
 @app.route('/logout')
