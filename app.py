@@ -100,16 +100,5 @@ def logout():
     session.pop('role', None)
     return redirect(url_for('login'))
 
-import os
-from flask import Flask, render_template, request, redirect, url_for, session
-from flask_sqlalchemy import SQLAlchemy
-
-app = Flask(__name__)
-app.secret_key = os.environ.get('SECRET_KEY', 'your_secret_key')  # Use environment variable for secret key
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')  # Use environment variable for database URL
-db = SQLAlchemy(app)
-
-# Rest of your code...
-
 if __name__ == '__main__':
     app.run(debug=True)
