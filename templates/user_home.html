@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Home</title>
+    <title>VCT</title>
     <style>
     body {
         display: flex;
@@ -27,15 +27,44 @@
     .user-home-container {
         justify-content: center;
     }
+
+    .kotak {
+        width: 500px;
+        height: 200px;
+        background-color: #000000;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        transform: translate(-50%,-50%);
+        left: 50%;
+        top: 50%;
+        border-radius: 20px;
+    }
+
+    .kotak2 {
+        margin-top: 40px;
+    }
     </style>
 </head>
-<body>
-    <div class="user-home-container">
-        <h2>Data angkatan</h2>
-        <p>Pilih menu dibawah ini:</p>
-        <a href="https://drive.google.com/drive/folders/1QP3XzSKyRByBH3RcIdsL3ZYPVOgC7T_v?usp=drive_link" class="tombol" target="_blank">Foto angkatan</a>
-        <a href="https://drive.google.com/drive/folders/1Qw-cOCC79-U-VtyeB1YnDai3XR_aVLhO?usp=drive_link" class="tombol" target="_blank">Data angkatan</a>
-        <a href="{{ url_for('profile') }}" class="tombol">Profile</a>
+<body onLoad="value();">
+    <div class="user-home-container kotak">
+        <center class="kotak2">
+            <h2>Data angkatan</h2>
+            <p>Pilih menu dibawah ini:</p>
+            <a href="https://drive.google.com/drive/folders/1QP3XzSKyRByBH3RcIdsL3ZYPVOgC7T_v?usp=drive_link" class="tombol" target="_blank">Foto angkatan</a>
+            <a href="https://drive.google.com/drive/folders/1Qw-cOCC79-U-VtyeB1YnDai3XR_aVLhO?usp=drive_link" class="tombol" target="_blank">Data angkatan</a>
+            <a href="{{ url_for('profile') }}" class="tombol">Profile</a>
+        </center>
     </div>
+    <script>
+        function value()
+       {
+          var a = "apple";
+           if (a == "apple")
+           {
+           alert("Tolong jangan salah gunakan web ini");
+           }
+       }
+         </script>
 </body>
 </html>
