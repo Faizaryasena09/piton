@@ -62,3 +62,7 @@ button:hover {
     color: red;
     margin-top: 10px;
 }
+
+.user-home-container {
+    align-items: end;
+}
