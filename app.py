@@ -93,6 +93,25 @@ def change_password():
         return redirect(url_for('profile'))
     return render_template('change_password.html', user=user)
 
+@app.route('/change_username', methods=['GET', 'POST'])
+def change_username():
+    if 'username' not in session:
+        return redirect(url_for('login'))
+    
+    user = User.query.filter_by(username=session['username']).first()
+    if request.method == 'POST':
+        new_username = request.form['new_username']
+        if User.query.filter_by(username=new_username).first():
+            error = 'Username already taken. Please choose a different one.'
+            return render_template('change_username.html', error=error)
+        
+        user.username = new_username
+        db.session.commit()
+        session['username'] = new_username
+        return redirect(url_for('profile'))
+    
+    return render_template('change_username.html')
+
 # Halaman logout
 @app.route('/logout')
 def logout():

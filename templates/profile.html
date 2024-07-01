@@ -4,16 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <div class="profile-container">
-        <h2>Profile Page</h2>
-        <p><strong>Username:</strong> {{ user.username }}</p>
-        <p><strong>Role:</strong> {{ user.role }}</p>
-        <a href="{{ url_for('change_password') }}">Change Password</a>
-        <a href="{{ url_for('logout') }}">Logout</a>
-        <a href="{{ url_for('admin_home' if user.role == 'admin' else 'user_home') }}">Home</a>
-    </div>
+    <h1>Profile</h1>
+    <p>Username: {{ user.username }}</p>
+    <a href="/change_password">Change Password</a>
+    <a href="/change_username">Change Username</a>
 </body>
 </html>
