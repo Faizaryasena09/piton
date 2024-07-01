@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #005cd5;
+    background-color: #0463FA;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -41,6 +41,17 @@ button {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.tombol {
+    padding: 10px 15px;
+    background-color: #ffffff;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
 }
 
 button:hover {
