@@ -65,4 +65,5 @@ button:hover {
 
 .user-home-container {
     align-items: end;
+    position: relative;
 }
