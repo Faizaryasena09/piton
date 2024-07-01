@@ -4,12 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Home</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+    body {
+        display: flex;
+        background-color: blue;
+        color: white;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .tombol {
+      padding: 10px 15px;
+      background-color: #ffffff;
+      color: #000000;
+      font-family: Arial, Helvetica, sans-serif;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    
+    </style>
 </head>
 <body>
     <div class="user-home-container">
         <h2>Foto-foto angkatan</h2>
-        <p class="tombol">Pilih menu dibawah ini:</p>
+        <p>Pilih menu dibawah ini:</p>
         <a href="https://drive.google.com/drive/folders/1QP3XzSKyRByBH3RcIdsL3ZYPVOgC7T_v?usp=drive_link" class="tombol" target="_blank">Foto angkatan</a>
         <a href="https://drive.google.com/drive/folders/1Qw-cOCC79-U-VtyeB1YnDai3XR_aVLhO?usp=drive_link" class="tombol" target="_blank">Data angkatan</a>
         <a href="{{ url_for('profile') }}" class="tombol">Profile</a>
